@@ -1,0 +1,12 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="EndToEndFlowSuite" verbose="1">
+	
+	<test name="CXWebTestOnChrome">
+		<parameter name="browserName" value="Firefox" />
+		<parameter name="url"
+			value="https://banking.sbx-cx-team-6.dbsdev.sbcp.io/" />
+		<classes>
+			<class name="com.cxweb.tests.CreateLocalTransferEuroPayeeTest" />
+		</classes>
+	</test>
+</suite>
