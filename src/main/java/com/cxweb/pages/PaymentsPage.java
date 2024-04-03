@@ -12,7 +12,7 @@ public class PaymentsPage {
 	@FindBy(xpath="//button[@data-testid='quickLink-payments.root.quickLink.addPayee']")
 	WebElement btn_addPayee;
 	
-	@FindBy(xpath="//button[@data-testid='detailsTable-accountHolder']")
+	@FindBy(xpath="//div[@data-testid='detailsTable-accountHolder']")
 	WebElement btn_payee;
 	
 	public PaymentsPage(WebDriver driver) {

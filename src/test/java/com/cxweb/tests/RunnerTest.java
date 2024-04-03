@@ -15,8 +15,9 @@ public class RunnerTest {
 	protected static ThreadLocal<WebDriver> threadLocalDriver = new ThreadLocal<>();
 
 	@BeforeClass
-	public void Setup(String browserName) {
-		if (browserName.equalsIgnoreCase(UtilityMethods.getPropFileData("browser_name"))) {
+	public void Setup() {
+		String browserName=UtilityMethods.getPropFileData("browser_name");
+		if (browserName.equalsIgnoreCase(browserName)) {
 			FirefoxOptions firefoxOptions = new FirefoxOptions();
 			firefoxOptions.addArguments("--ignore-ssl-errors=yes");
 			firefoxOptions.addArguments("--ignore-certificate-errors");
