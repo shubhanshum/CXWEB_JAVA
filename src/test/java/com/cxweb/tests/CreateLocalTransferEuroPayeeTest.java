@@ -31,7 +31,8 @@ public class CreateLocalTransferEuroPayeeTest extends RunnerTest {
 		selectPaymentTypePage = new SelectPaymentTypePage(getDriver());
 		confirmPayeeDetailsPage = new ConfirmPayeeDetailsPage(getDriver());
 		twoFaPage = new TwoFAPage(getDriver());
-		landingPage.login("shubhanshu66@test.com", "Password@12");
+		landingPage.login(UtilityMethods.getPropFileData("user_email"),
+				UtilityMethods.getPropFileData("user_password"));
 		Assert.assertEquals(homePage.verifyProfileIconIsDisplayed(), true, "Profile Icon Is Displayed");
 		homePage.clickPaymentsTab();
 		Assert.assertEquals(paymentsPage.verifyAddPayeeBtnIsDisplayed(), true, "Add Payee Button Is Displayed");

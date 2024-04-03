@@ -1,5 +1,6 @@
 package com.cxweb.utils;
 
+import java.util.Properties;
 import java.util.concurrent.ThreadLocalRandom;
 
 import org.apache.http.HttpResponse;
@@ -9,6 +10,8 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONArray;
 
 import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.text.SimpleDateFormat;
@@ -28,7 +31,7 @@ public class UtilityMethods {
 	public static String getMailcatcherOtp() {
 		String otp = "";
 		HttpClient client = new DefaultHttpClient();
-		HttpGet exeRequest = new HttpGet("https://mailcatcher.sbx-cx-team-6.dbsdev.sbcp.io/messages");
+		HttpGet exeRequest = new HttpGet(UtilityMethods.getPropFileData("mailcatcher")+"/messages");
 		try {
 			HttpResponse response = client.execute(exeRequest);
 			BufferedReader br = new BufferedReader(new InputStreamReader((response.getEntity().getContent())));
@@ -38,7 +41,7 @@ public class UtilityMethods {
 				JSONArray array = new JSONArray(output);
 				lenOfMails = array.length();
 				HttpGet exeRequest1 = new HttpGet(
-						"https://mailcatcher.sbx-cx-team-6.dbsdev.sbcp.io/messages/" + lenOfMails + ".plain");
+						UtilityMethods.getPropFileData("mailcatcher")+"/messages/" + lenOfMails + ".plain");
 				HttpResponse response1 = client.execute(exeRequest1);
 				BufferedReader br1 = new BufferedReader(new InputStreamReader((response1.getEntity().getContent())));
 				String output1 = "";
@@ -55,5 +58,24 @@ public class UtilityMethods {
 		}
 		return otp;
 	}
+	
+	public static String getPropFileData(String strKey) {
+		FileInputStream fileInputStream = null;
+		String value = "";
+		if (fileInputStream == null) {
+			try {
+				fileInputStream = new FileInputStream(System.getProperty("user.dir")+"//src//main//java//com//cxweb//config//TestData.properties");
+				Properties properties = new Properties();
+				properties.load(fileInputStream);
+				value = properties.getProperty(strKey);
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+
+		}
+		return value;
+	};
 
 }
