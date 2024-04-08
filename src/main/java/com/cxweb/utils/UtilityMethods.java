@@ -31,6 +31,11 @@ public class UtilityMethods {
 	public static String getMailcatcherOtp() {
 		String otp = "";
 		HttpClient client = new DefaultHttpClient();
+		try {
+			Thread.sleep(3000);
+		} catch (InterruptedException e1) {
+			e1.printStackTrace();
+		}
 		HttpGet exeRequest = new HttpGet(UtilityMethods.getPropFileData("mailcatcher")+"/messages");
 		try {
 			HttpResponse response = client.execute(exeRequest);

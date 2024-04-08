@@ -22,6 +22,11 @@ public class ConfirmPayeeDetailsPage {
 	}
 	
 	public boolean verifyAddpayeeConfirmBtnIsDisplayed() {
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 		return btn_addPayee.isDisplayed();
 	}
 }

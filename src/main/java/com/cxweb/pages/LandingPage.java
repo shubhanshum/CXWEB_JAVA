@@ -5,6 +5,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import com.cxweb.utils.UtilityMethods;
+
 public class LandingPage {
 
 	WebDriver driver;
@@ -17,6 +19,12 @@ public class LandingPage {
 	
 	@FindBy(name="commit")
 	WebElement btn_login;
+	
+	@FindBy(id="otp")
+	WebElement txt_otp;
+	
+	@FindBy(name="submitOtp")
+	WebElement btn_verify;
 	
 	public LandingPage(WebDriver driver) {
 		this.driver=driver;
@@ -32,5 +40,9 @@ public class LandingPage {
 		txt_email.sendKeys(email);
 		txt_password.sendKeys(password);
 		btn_login.click();
+		if (txt_otp.isDisplayed()==true) {
+			txt_otp.sendKeys(UtilityMethods.getMailcatcherOtp());
+			btn_verify.click();
+		}
 	}
 }
