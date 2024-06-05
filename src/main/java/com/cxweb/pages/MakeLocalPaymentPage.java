@@ -15,7 +15,7 @@ public class MakeLocalPaymentPage {
 	@FindBy(id="reference")
 	WebElement txt_reference;
 	
-	@FindBy(xpath="//button[@data-testid='button-payments.makePayment.continue']")
+	@FindBy(xpath="//button[@data-testid='button-payments.make_payment_continue']")
 	WebElement btn_continue;
 	
 	public MakeLocalPaymentPage(WebDriver driver) {

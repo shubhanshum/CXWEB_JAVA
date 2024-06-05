@@ -12,7 +12,6 @@ import org.testng.annotations.BeforeClass;
 
 import com.cxweb.utils.UtilityMethods;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class RunnerTest {
 
@@ -23,13 +22,11 @@ public class RunnerTest {
 		String browserName=UtilityMethods.getPropFileData("browser_name");
 		System.out.println("Launching "+browserName+" Browser");
 		if (browserName.equalsIgnoreCase("Firefox")) {
-			WebDriverManager.firefoxdriver().setup();
 			FirefoxOptions firefoxOptions = new FirefoxOptions();
 			firefoxOptions.addArguments("--ignore-ssl-errors=yes");
 			firefoxOptions.addArguments("--ignore-certificate-errors");
 			threadLocalDriver.set(new FirefoxDriver(firefoxOptions));
 		} else {
-			WebDriverManager.chromedriver().setup();
 			ChromeOptions chromeOptions=new ChromeOptions();
 			chromeOptions.addArguments("--ignore-ssl-errors=yes");
 			chromeOptions.addArguments("--ignore-certificate-errors");

@@ -9,10 +9,10 @@ public class PaymentsPage {
 
 	WebDriver driver;
 	
-	@FindBy(xpath="//button[@data-testid='quickLink-payments.root.quickLink.addPayee']")
+	@FindBy(xpath="//button[@data-testid='quickLink-payments.root_quick_link_add_payee']")
 	WebElement btn_addPayee;
 	
-	@FindBy(xpath="//div[@data-testid='detailsTable-accountHolder']")
+	@FindBy(xpath="//div[@data-testid='detailsTable-accountHolder' and text()='Netflix']")
 	WebElement btn_payee;
 	
 	public PaymentsPage(WebDriver driver) {
@@ -32,7 +32,9 @@ public class PaymentsPage {
 		return btn_payee.isDisplayed();
 	}
 	
-	public void clickOnPayee() {
-		btn_payee.click();
+	public void clickOnPayee(String payeeName) {
+		
+			btn_payee.click();
+		
 	}
 }

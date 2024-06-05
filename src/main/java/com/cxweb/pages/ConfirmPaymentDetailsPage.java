@@ -9,7 +9,7 @@ public class ConfirmPaymentDetailsPage {
 
 	WebDriver driver;
 	
-	@FindBy(xpath="//button[@data-testid='button-payments.confirmPayment.confirmPayment']")
+	@FindBy(xpath="//button[@data-testid='button-payments.confirm_payment']")
 	WebElement btn_confirmPayment;
 	
 	public ConfirmPaymentDetailsPage(WebDriver driver) {

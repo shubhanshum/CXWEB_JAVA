@@ -9,7 +9,7 @@ public class PayeeDetailsPage {
 
 	WebDriver driver;
 	
-	@FindBy(xpath="//span[@data-testid='payments.payeeDetails.makeAPayment']")
+	@FindBy(xpath="//span[@data-testid='payments.payee_details_make_a_payment']")
 	WebElement btn_makePayment;
 	
 	public PayeeDetailsPage(WebDriver driver) {
